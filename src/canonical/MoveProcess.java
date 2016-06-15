@@ -1,13 +1,12 @@
 package canonical;
 
-import intfscan.IMoveable;
 import intfscan.IProcess;
 
 import java.util.List;
 
 public class MoveProcess implements IProcess {
 
-	protected List<IMoveable> targets; 
+	protected List<MoveData> targets; 
 
 	@Override
 	public boolean start() {
@@ -16,7 +15,10 @@ public class MoveProcess implements IProcess {
 
 	@Override
 	public void update(int time) {
-		for(IMoveable target : targets) target.move(time);		
+		for(MoveData target : targets) { 
+			target.position.x += target.velocity * time;
+			target.position.rotation += target.angularVelocity * time;
+}		
 	}
 
 	@Override

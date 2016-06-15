@@ -1,13 +1,11 @@
 package canonical;
 
 import intfscan.IProcess;
-import intfscan.IRenderable;
-
 import java.util.List;
 
 public class RenderProcess implements IProcess {
 
-	protected List<IRenderable> targets; 
+	protected List<RenderData> targets; 
 	
 	@Override
 	public boolean start() {
@@ -17,7 +15,11 @@ public class RenderProcess implements IProcess {
 
 	@Override
 	public void update(int Number) {
-		for(IRenderable target : targets) target.render();
+		for(RenderData target : targets) {
+			target.view.x = target.position.x;
+			target.view.y = target.position.y;
+			target.view.rotation = target.position.rotation;
+}
 	}
 
 	@Override
