@@ -1,6 +1,6 @@
 package intfscan;
 
-public interface IProcess {
+public interface ISystem {
 	  boolean start();
 	  void update(int Number );
 	  void end();

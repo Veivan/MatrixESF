@@ -1,12 +1,14 @@
 package canonical;
 
-import intfscan.IProcess;
+import intfscan.ISystem;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class RenderProcess implements IProcess {
+public class RenderSystem implements ISystem {
 
-	protected List<RenderData> targets; 
-	
+	protected List<RenderNode> targets = new ArrayList<RenderNode>();
+
 	@Override
 	public boolean start() {
 		// TODO Auto-generated method stub
@@ -15,16 +17,17 @@ public class RenderProcess implements IProcess {
 
 	@Override
 	public void update(int Number) {
-		for(RenderData target : targets) {
+		for (RenderNode target : targets) {
 			target.view.x = target.position.x;
 			target.view.y = target.position.y;
 			target.view.rotation = target.position.rotation;
-}
+		}
+		System.out.println("RenderSystem updated");
 	}
 
 	@Override
 	public void end() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
 
 }
